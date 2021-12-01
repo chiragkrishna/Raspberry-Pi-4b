@@ -61,9 +61,14 @@ network:
 
 # set country code
 # https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2
-
+# set country code to india
+# check if it is set
+sudo iw reg get
+# if not set
+sudo iw reg set IN
+# just to make sure add here also
 sudo nano /etc/default/crda
-REGDOMAIN=IN # YOUR COUNTRY CODE
+REGDOMAIN=IN
 
 sudo netplan generate
 sudo netplan apply
