@@ -59,7 +59,9 @@ network:
                     password: "PASSWORD"
                     hidden: true #IF HIDDEN WIFI
 
-# set country code to india
+# set country code
+# https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2
+
 sudo nano /etc/default/crda
 REGDOMAIN=IN # YOUR COUNTRY CODE
 
@@ -70,7 +72,7 @@ sudo netplan apply
 #                               automount mmc                               #
 #############################################################################
 
-# check mmc location
+# check memory card location
 sudo fdisk -l
 # Locate the UUID
 sudo blkid
@@ -99,7 +101,12 @@ sudo gpasswd -a $USER sudo
 sudo passwd -l ubuntu
 
 # set timezones
+# to list all the timezones
+timedatectl list-timezones
+
+#select your timezone
 sudo timedatectl set-timezone Asia/Kolkata
+
 # set hostname
 sudo hostnamectl set-hostname "NEW-HOSTNAME"
 
@@ -378,9 +385,3 @@ showfigfonts
 #bash = sudo nano /etc/bash.bashrc
 # SAMPLES
 figlet -ct -f Poison "U b u n t u" | lolcat -a -d 1 -t
-
-figlet -ct -f defleppard "K A L I" | lolcat -a -d 1 -t
-
-figlet -ct -f fire_font-s "S E R V E R 2 3 1" | lolcat -a -d 1 -t
-
-figlet -ct -f fire_font-k "S E R V E R 2 3 3" | lolcat -a -d 1 -t
