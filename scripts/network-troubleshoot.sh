@@ -12,8 +12,11 @@ ping -4 -c4 192.168.1.1 > /dev/null
 if [ $? != 0 ] 
 then
     echo "`date` no network connection, restarting system" >> /home/$USER/custome_scripts.log
-    sudo /sbin/shutdown -r now
+    /sbin/ifdown 'wlan0'
+    sleep 10
+    /sbin/ifup --force 'wlan0'
 else
+#this is to check if other raspi is down or not
 ping -4 -c4 192.168.1.233 > /dev/null
   if [ $? != 0 ] 
     then
